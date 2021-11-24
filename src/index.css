@@ -1,13 +1,365 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.app {
+  background: linear-gradient(rgb(149, 36, 255),blue,cornflowerblue,white);
+  background-size: cover;
+  transition: 0.5s ease-out;
+  background-position: bottom;
+  
+}
+
+.app.warm {
+  background: linear-gradient(red,orange, yellow,  white);
+  background-size: cover;
+  transition: 0.5s ease-out;
+  background-position: bottom;
+}
+
+main {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
+  padding:25px;
+}
+
+.search-box {
+  width: 80%;
+  margin: 5px auto; 
+}
+
+.search-box .search-bar {
+  display: block;
+  width: 100%;
+  padding: 20px;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 16px 0px 16px 0px;
+  /*margin-top: -25px;*/
+
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+  color: black;
+  font-size: 20px;
+
+  transition: 0.4s ease;
+  
+}
+
+.autocomplete-dropdown-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-box .search-bar:focus {
+  background-color: rgba(255, 255, 255, 1);  
+}
+
+
+.weather-description {
+  
+  width: 60%;
+  padding: 20px;
+  margin-top: 8em;
+  margin-left: auto;
+  margin-right: auto;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16px 0px 16px 0px;
+  /*margin-top: -25px;*/
+
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+  color: black;
+  font-size: 20px;
+}
+
+.weather-details {
+ 
+  width: 60%;
+  padding: 100px;
+  margin-top: 6em;
+  margin-left: auto;
+  margin-right: auto;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16px 0px 16px 0px;
+  /*margin-top: -25px;*/
+
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+  color: black;
+  font-size: 20px;
+  
+
+}
+
+.weather-location {
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 1.5px 1.5px gray;
+  letter-spacing: 4px;
+}
+
+.date-time {
+  color: black;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+
+.temp-icon {
+  text-align: center;
+  margin-top: 15px;
+}
+.temp {
+  display:inline-block;
+  color: black;
+  font-size: 35px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 1.3px 1.3px gray;
+  letter-spacing: 3px;
+}
+.icon {
+  display:inline-block;
+}
+img {
+  height:90px; 
+  width:90px;
+}
+.description {
+  text-align: center;
+  margin-top: 35px;
+  color: black;
+  font-size: 25px;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.min-max-temp .icon {
+  float: left;
+  font-size: 40px;
+}
+.min-max-temp .temp {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.min-max-temp .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+.humidity {
+  margin-top: 35px;
+}
+.humidity .icon {
+  float: left;
+  font-size: 40px;
+}
+.humidity .humidity-value {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.humidity .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+.pressure {
+  margin-top: 35px;
+}
+.pressure .icon {
+  float: left;
+  font-size: 40px;
+  transform: rotate(135deg);
+}
+.pressure .pressure-value {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.pressure .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+.visibility {
+  margin-top: 35px;
+}
+.visibility .icon {
+  float: left;
+  font-size: 40px;
+}
+.visibility .visibility-value {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.visibility .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+.wind {
+  margin-top: 35px;
+}
+.wind .icon {
+  float: left;
+  font-size: 40px;
+}
+.wind .wind-value {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.wind .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+.rain {
+  margin-top: 35px;
+}
+.rain .icon {
+  float: left;
+  font-size: 40px;
+}
+.rain .rain-value {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.rain .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+.snow {
+  margin-top: 35px;
+}
+.snow .icon {
+  float: left;
+  font-size: 40px;
+}
+.snow .snow-value {
+  float: right;
+  color: black;
+  font-size: 23px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+}
+.snow .label {
+  color: black;
+  font-size: 28px;
+  font-weight: 300;
+  text-shadow: 1px 1px gray;
+  letter-spacing: 4px;
+  margin-left: 15px;
+}
+
+.suggestion {
+  font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: black;
+  font-size: 21px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin: 1em;
+}
+
+.loading {
+  color: white;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.error {
+  width: 100%;
+  padding: 100px;
+  margin-top: 6em;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 16px 0px 16px 0px;
+  /*margin-top: -25px;*/
+
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+  color: black;
+  font-size: 20px;
+}
+.message {
+  text-align: center;
+  font-weight: bold;
 }
